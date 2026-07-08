@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.paismart.pai_test.Mapper.ChunkInfoMapper">
+    <insert id="add_ChunkInfo">
+        insert into chunk_info (chunk_index,chunk_md5,file_md5,storage_path) values (#{chunkIndex},#{chunkMd5},#{fileMd5},#{storagePath});
+    </insert>
+
+    <delete id="deleteByMD5">
+        delete  from chunk_info where file_md5=#{MD5}
+    </delete>
+
+    <select id="getChun" resultType="org.paismart.pai_test.entity.ChunkInfo">
+        select * from chunk_info where file_md5=#{MD5} ORDER BY chunk_index ASC
+    </select>
+
+
+</mapper>

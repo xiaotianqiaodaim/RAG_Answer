@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="org.paismart.pai_test.Mapper.HistoryChatMapper">
+    <insert id="insertOneChat">
+        insert into history_chat (user_id,chat_id ,topic,user_question,deepseek_response)
+        values
+        (#{userId},#{chatId},#{topic},#{userQuestion},#{deepseekResponse})
+    </insert>
+    <select id="gethistList" resultType="java.util.HashMap">
+        select distinct chat_id as chat_id ,
+        topic as topic
+        from history_chat where user_id=#{userId}
+    </select>
+    <select id="getChatByChatID" resultType="java.util.Map">
+        select user_question as user_question ,
+        deepseek_response as deepseek_response
+        from history_chat where chat_id=#{chatId}
+    </select>
+
+</mapper>

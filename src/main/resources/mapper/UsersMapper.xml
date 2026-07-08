@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+
+<mapper namespace="org.paismart.pai_test.Mapper.UsersMapper">
+    <insert id="register">
+        insert into users (user_name,pass_word,role,org_tag,primary_tag,create_date_time,login_time)
+        values
+        (#{userName},#{passWord},#{role},#{orgTag},#{primaryTag},#{createDateTime},#{loginTime})
+    </insert>
+
+    <select id="login" resultType="org.paismart.pai_test.entity.User">
+        select id,user_name,pass_word,role,org_tag,primary_tag,create_date_time,login_time from users where
+        user_name=#{userName} and pass_word=#{passWord}
+    </select>
+    <select id="getByID" resultType="org.paismart.pai_test.entity.User">
+        select id,user_name,pass_word,role,org_tag,primary_tag,create_date_time,login_time from users where
+        id=#{id}
+
+    </select>
+    <select id="getByUsername" resultType="org.paismart.pai_test.entity.User">
+        select id,user_name,pass_word,role,org_tag,primary_tag,create_date_time,login_time from users where
+        user_name=#{username}
+    </select>
+
+</mapper>

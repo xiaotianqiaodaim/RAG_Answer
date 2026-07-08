@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.paismart.pai_test.Mapper.FileUploadMapper">
+    <insert id="Insert_one">
+        insert into file_upload (file_md5,file_name,total_size,status ,user_id ,org_tag ,is_public,created_at)
+        values(#{fileMd5},#{fileName},#{totalSize},#{status},#{userId},#{orgTag},#{isPublic},#{createdAt});
+    </insert>
+    <update id="set_Status">
+        update file_upload set status=1 where file_md5=#{MD5}
+    </update>
+
+    <select id="get_byMD5" resultType="org.paismart.pai_test.entity.FileUpload">
+            select * from file_upload where file_md5=#{MD5}
+    </select>
+
+</mapper>
